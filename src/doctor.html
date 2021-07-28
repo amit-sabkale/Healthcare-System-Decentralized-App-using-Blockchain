@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src ="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"></script>
+<script src="./dist/build.js"></script>
+<script>
+$(document).ready(function(){
+  $(".menu").on('click', '.a', function () {
+    $("#a1").css("display","block");
+    $("#b1").css("display","none");
+    $("#a2").css("display","block");
+    $("#b2").css("display","none");
+  });
+  $(".menu").on('click', '.b', function () {
+    $("#b1").css("display","block");
+    $("#a1").css("display","none");
+    $("#b2").css("display","block");
+    $("#a2").css("display","none");
+  });
+});
+</script>
+  <head>
+    <meta charset="utf-8">
+    <title>Doctor Profile</title>
+  </head>
+  <body>
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <h1>HealthBlock</h1>
+    </div>
+    <div class="menu">
+      <ul>
+        <li class="a"><a id ="profile" data-text="Records" href="#">Profile</a></li>
+        <li class="b"><a id = "med" data-text="Medical Records" href="#">Records</a></li>
+        <li><a data-text="Logout" href="index.html">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<section id=a2><section class="Sec_Pat">
+<div class="titlehead">
+ <h1>Profile</h1>
+</div>
+<div class="picbg">
+ <img src="images/profbg.png">
+</div>
+</section></section>
+
+<section id=b2><section class="Sec_Pat">
+<div class="titlehead">
+<h1>Patient Records</h1>
+</div>
+<div class="picbg">
+<img src="images/recbg.png">
+</div>
+</section></section>
+
+<div class="container">
+  <section id="a1">
+    <div id = "hprofile" class="panel panel-default">
+        <div class="panel-heading"><br><br>
+            <h3 class="text-center" style="font-size: 30px;">Personal Information</h3><br>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-offset-1 col-sm-10">
+                  <table class="table">
+                      <tr>
+                          <th>Name</th>
+                          <td id="dname"></td>
+                      </tr>
+                      <br>
+                      <tr>
+                          <th>Age</th>
+                          <td id="d_age"></td>
+                      </tr>
+                      <br>
+                      <tr>
+                          <th>Account Address</th>
+                          <td id="d_address"></td>
+                      </tr><br>
+                  </table><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br><br><br><br><br>
+    </div>
+  </section>
+  <section id="b1">
+    <div id = "hmr" class="panel panel-default" >
+        <div class="panel-heading">
+            <h3 class="text-center">Accessible Patient Records</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-offset-1 col-sm-10"><br><br>
+                  <table id="viewPatient" class="table table-hover">
+                      <tr>
+                          <th>Patient</th>
+                          <th class="publicKeyDoctor">Account Address</th>
+                          <th>Records</th>
+                      </tr>
+                  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<div id = 'parentroot'>
+</div>
+  </section>
+</div>
+
+
+  </body>
+</html>

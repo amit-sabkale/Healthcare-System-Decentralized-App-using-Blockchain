@@ -1,0 +1,225 @@
+*{
+    margin: 0; padding:0; box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    color: #00305C;
+}
+
+#a1,#a2{
+  display: block;
+}
+
+#b1,#c1,#b2,#c2{
+  display: none;
+
+}
+
+
+
+.navbar{
+  border: 0px;
+  border-bottom: 3px;
+  border-color: #005099;
+  border-style: solid;
+  display: flex;
+}
+.logo{
+  width: 50%;
+}
+
+.logo h1{
+    line-height: 75px;
+    padding-left: 50px;
+}
+
+.menu{
+  width: 50%;
+}
+.menu ul{
+    width: 100%;
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.menu ul li{
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.menu ul li a{
+    text-decoration: none;
+}
+
+.menu ul li:hover {
+background-color: #D8EBF1;
+color: black;
+}
+
+
+
+.Sec_About{
+  display: flex;
+  background: linear-gradient(57deg, #E4F2FF, #4BA9FF);
+  border: 0px;
+  border-bottom: 3px;
+  border-color: #005099;
+  border-style: solid;
+  }
+
+  .Sec_Pat{
+    display: flex;
+    background: linear-gradient(57deg, #E4F2FF, #4BA9FF);
+    border: 0px;
+    border-bottom: 3px;
+    border-color: #005099;
+    border-style: solid;
+    }
+
+
+.leftside { width: 50%; height: auto; overflow: hidden;}
+
+.leftside img{  height: 550px; }
+
+.picbg { width: 50%; height: auto; overflow: hidden;}
+
+.picbg img{  height: 150px; }
+
+.rightside{ width: 55%; height: 300px; text-align: center; margin-top: 80px; padding: 40px;}
+
+.rightside h1{ text-align: center;
+    font-size: 50px;
+    font-weight: 900;
+   }
+
+.rightside p {
+    font-size: 1.1rem; padding: 30px 0; }
+
+.titlehead{ width: 250%; height: 150px; text-align: left; padding: 20px 40px;}
+
+.titlehead h1{
+        font-size: 70px;
+        font-weight: 900;
+       }
+
+.titlehead p {
+        font-size: 1.1rem; padding-top: 20px; }
+
+
+
+.HIW_Sec h1{
+    background-color: white;
+    font-size: 60px;
+    padding-top: 100px;
+    padding: 15px;
+    text-align: left;
+  }
+  .HIW_Sec p{
+    padding: 15px;
+    font-size: 20px;
+    text-align: left;
+  }
+
+
+.logreg{
+  background-image: url(https://static.vecteezy.com/system/resources/previews/001/072/376/original/network-connections-on-white-background-vector.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 170px 500px;
+}
+.form{
+background-color: white;
+text-align: center;
+height: 430px;
+width: 500px;
+border-radius: 20px;
+border: 2px solid #005099;
+}
+
+.form p{
+  padding: 10px;
+}
+.form input{
+  margin: 10px;
+  padding: 3px;
+}
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #005099;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+}
+
+.button:hover {background-color: #0085FF}
+
+.rbutton {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #A90000;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+}
+
+.rbutton:hover {background-color: #FF0000}
+
+.container{
+  padding-left: 300px;
+  padding-top: 30px;
+}
+th{
+  padding: 10px;
+}
+.recordsstorage{
+  border: 10px solid transparent;
+  border-style: solid;
+  border-image: url(../images/border.png) 30 stretch;
+  width:800px;
+  padding:35px;
+}
+table,th,td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 8px;
+  text-align: left;
+
+}
+tr{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 8px;
+  text-align: left;
+
+}
+th{
+  background-color: #E4F2FF;
+}
+tr:nth-of-type(even) td{
+  background-color: lighten(#4ECDC4, 35%);
+}
+.book{
+  display: flex;
+}
+.lef,.righ{
+  flex = 1;
+}

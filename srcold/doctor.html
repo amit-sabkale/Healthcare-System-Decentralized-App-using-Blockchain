@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Healthcare Dapp</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <h1>Healthcare</h1>
+        <ul>
+          <li><a id ="profile" class = 'shown' data-text="Profile" href="#">Profile</a></li>
+          <li><a id = "mer" data-text="Accessible Records" href="#">Accessible Records</a></li>
+          <li><a data-text="Logout" href="#">Logout</a></li>
+        </ul>
+      </nav>
+    
+    
+    
+
+    <div class="container">
+        <div id = "hprofile" class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="text-center">Personal Information</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <table class="table">
+                            <tr>
+                                <th>Name:</th>
+                                <td id="name"></td>
+                            </tr>
+                            <tr>
+                                <th>Age:</th>
+                                <td id="age"></td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+    
+        
+        <div id = "hmr" class="panel panel-default" style = "display: none;">
+            <div class="panel-heading">
+                <h3 class="text-center">Accessible Patient Records</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="alert alert-danger col-sm-8 col-sm-offset-2">
+                        <strong> Could not access records. Access might have been revoked. Contact admin or patient.</strong><br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <table id="viewPatient" class="table table-hover">
+                            <tr>
+                                <th>Patient</th>
+                                <th class="publicKeyPatient">Public Key</th>
+                                <th>Action</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</body>
+<script>
+ $(document).ready(function(){
+  $("#profile").click(function(){
+    $("#hprofile").show();
+    $("#hmr").hide();
+  });
+  $("#mer").click(function(){
+    $("#hprofile").hide();
+    $("#hmr").show();
+  });
+  
+});   
+</script>
+

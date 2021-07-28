@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <nav>
+    <h1>Healthcare</h1>
+    <ul>
+      <li><a id ="profile" class = 'shown' data-text="Profile" href="#">Profile</a></li>
+      <li><a id = "med" data-text="Medical Records" href="#">Medical Records</a></li>
+      <li><a id = "doc" data-text="Doctors" href="#">Doctors</a></li>
+      <li><a data-text="Logout" href="#">Logout</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+            <div id = "hprofile" class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="text-center">Personal Information</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-offset-1 col-sm-10">
+                            <table class="table">
+                                <tr>
+                                    <th>Name:</th>
+                                    <td id="name"></td>
+                                </tr>
+                                <br>
+                                <tr>
+                                    <th>Age: ⠀</th>
+                                    <td id="age"></td>
+                                </tr>
+                                <br>
+                            </table>
+
+                            <div class="text-center">
+                              <div id="container"></div>
+
+                              <div>
+                                  <button id="generate">View Records</button>
+                              </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id = "hmd" class="panel panel-default">
+                <div  class="panel-heading">
+                    <h3 class="text-center">Share Your Medical Record</h3><br>
+                </div>
+                <h1>File Upload</h1>
+                <label class="col-lg-2 control-label">Select File</label>
+                <input id="file" type="file">
+                <button id="button">Submit</button>
+                <br/>
+
+
+                    <form class="form-horizontal" >
+                        <div class="form-group">
+                            <label for="permitDoctorList" class="control-label col-sm-2"><br><strong>Doctor:</strong></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="permitDoctorList">
+                                    <option selected disabled>-- Please Select --</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="text-center">
+                        <button id = "giveAccess" class="btn btn-primary btn-lg">Submit</button>
+                    </div>
+                </div>
+
+
+            <div id = "hdoc" class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="text-center">Current Access Holders</h3><br>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="alert alert-danger col-sm-8 col-sm-offset-2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-offset-1 col-sm-10">
+                            <table id="accessDoc" class="table table-hover">
+                                <tr>
+                                    <th>Doctor</th>
+                                    <th class="publicKeyDoctor">Public Address</th>
+                                    <th>Revoke access</th>
+                                </tr>
+                            </table>
+                            <button id = "abc">revoke</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src ="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"></script>
+<script src="./dist/bundle.js"></script>
+</body>
+</html>

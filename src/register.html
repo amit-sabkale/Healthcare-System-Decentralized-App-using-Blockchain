@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="utf-8">
+    <title>HealthBlock</title>
+  </head>
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"></script>
+  <body>
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <h1>HealthBlock</h1>
+    </div>
+    <div class="menu">
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="index.html#HIW">How it works</a></li>
+        <li><a href="#" class="active">Register</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<section class="logreg">
+  <div class="form">
+
+    <div class="containerreg">
+      <div class="titl">
+        <br><br>
+      <h1>Registration</h1><br><br>
+    </div>
+      <div class="inputs">
+        <div style="text-align: left; padding-left:100px;">
+      <label for="name"><b>Name:&nbsp; &nbsp; &nbsp; &nbsp;</b></label>
+      <input type="text" placeholder="Enter Name" autocomplete="off" name="name" id="name" required><br>
+
+      <label for="dob"><b>Age: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</b></label>
+      <input type="number" placeholder="Age" id="age" autocomplete="off" name="quantity" min="1" max="150">
+      <br>
+
+      <label for="psw"><b>Password: </b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+      <br><br>
+
+      <label style="margin-right:25px;"><b>Role: &nbsp; &nbsp; &nbsp;</b></label>
+      <select name ="role" id= "role">
+        <option value="0">Patient</option>
+        <option value="1">Doctor</option>
+      </select><p>&nbsp;</p>
+      </div>
+      <button id = 'button' class="button">Register</button>
+  </div>
+    </div>
+    <div>
+      <p>&nbsp;</p>
+      <p>Already have an account? <a href="login.html">Sign in</a>.</p>
+    </div>
+  </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+var contract;
+
+$( document ).ready(function() {
+
+if(window.ethereum){
+  window.web3 = new Web3(window.ethereum);
+ window.ethereum.enable();
+}if(window.web3){
+  window.web3 = new Web3(window.web3.currentProvider);
+}else{
+  window.alert('Please use Metamask!');
+}
+
+const web3 = window.web3;
+var firstAccount;
+const networkID =  web3.eth.net.getId();
+
+const abi = JSON.parse('[{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"doctorList","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"patientList","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_name","type":"string"},{"name":"_age","type":"uint256"},{"name":"_designation","type":"uint256"},{"name":"_password","type":"string"}],"name":"add_agent","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"get_patient","outputs":[{"name":"","type":"string"},{"name":"","type":"uint256"},{"name":"","type":"string"},{"name":"","type":"string[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"get_doctor","outputs":[{"name":"","type":"string"},{"name":"","type":"uint256"},{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"paddr","type":"address"},{"name":"daddr","type":"address"}],"name":"get_patient_doctor_name","outputs":[{"name":"","type":"string"},{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"addr","type":"address"}],"name":"permit_access","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"paddr","type":"address"},{"name":"daddr","type":"address"}],"name":"remove_patient","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"get_accessed_doctorlist_for_patient","outputs":[{"name":"","type":"address[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"get_accessed_patientlist_for_doctor","outputs":[{"name":"","type":"address[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"daddr","type":"address"}],"name":"revoke_access","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"get_patient_list","outputs":[{"name":"","type":"address[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"get_doctor_list","outputs":[{"name":"","type":"address[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"paddr","type":"address"}],"name":"get_hash","outputs":[{"name":"","type":"string[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_hash","type":"string"}],"name":"push_hash","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"paddr","type":"address"},{"name":"rhash","type":"string"}],"name":"delete_hash","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]');
+const address = "0x3b98D43381C642B82C0168F6b8E16511667fC9E3";
+const contract = new web3.eth.Contract(abi, address);
+
+$("#button").click(function() {
+
+   web3.eth.getAccounts().then(e => {
+   firstAccount = e[0];
+   var PatientList = 0;
+   var DoctorList = 0;
+   var validAgent = true;
+   contract.methods.get_patient_list().call().then(result =>{
+     PatientList = result;
+     console.log(result);
+
+   contract.methods.get_doctor_list().call().then(result =>{
+     DoctorList = result;
+     console.log(result);
+
+
+   for(j = 0; j < PatientList.length; j++) {
+        if (firstAccount == PatientList[j] ){
+            validAgent = false;
+       }
+   }
+   for(j = 0; j < DoctorList.length; j++) {
+        if (firstAccount == DoctorList[j] ){
+            validAgent = false;
+       }
+   }
+
+
+   if(validAgent == true){
+   contract.methods.add_agent($("#name").val(), $("#age").val(), $("#role").val(), $("#password").val() ).send({from: firstAccount});
+   setTimeout('window.open("login.html","_self");',7000);
+    }
+    else{
+   setTimeout("window.alert('Account Aready exists! Redirecting to Login');",1000);
+   setTimeout('window.open("login.html","_self");',2000);
+ }
+ });
+});
+  });
+});
+});
+
+ </script>
+  </body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src ="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"></script>
+<script src="./dist/bundle.js"></script>
+<script>
+$(document).ready(function(){
+  $(".menu").on('click', '.a', function () {
+    $("#a1").css("display","block");
+    $("#b1").css("display","none");
+    $("#c1").css("display","none");
+    $("#a2").css("display","block");
+    $("#b2").css("display","none");
+    $("#c2").css("display","none");
+  });
+  $(".menu").on('click', '.b', function () {
+    $("#b1").css("display","block");
+    $("#c1").css("display","none");
+    $("#a1").css("display","none");
+    $("#b2").css("display","block");
+    $("#c2").css("display","none");
+    $("#a2").css("display","none");
+  });
+  $(".menu").on('click', '.c', function () {
+    $("#c1").css("display","block");
+    $("#b1").css("display","none");
+    $("#a1").css("display","none");
+    $("#c2").css("display","block");
+    $("#b2").css("display","none");
+    $("#a2").css("display","none");
+  });
+});
+</script>
+  <head>
+    <meta charset="utf-8">
+    <title>Patient Profile</title>
+  </head>
+  <body>
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <h1>HealthBlock</h1>
+    </div>
+    <div class="menu">
+      <ul>
+        <li class="a"><a id ="profile" data-text="Records" href="#">Records</a></li>
+        <li class="b"><a id = "med" data-text="Medical Records" href="#">Upload</a></li>
+        <li class="c"><a id = "doc" data-text="Doctors" href="#">Doctors</a></li>
+        <li><a data-text="Logout" href="index.html">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+  <section id=a2><section class="Sec_Pat">
+  <div class="titlehead">
+   <h1>Your Records</h1>
+  </div>
+  <div class="picbg">
+   <img src="images/recbg.png">
+  </div>
+</section></section>
+
+<section id=b2><section class="Sec_Pat">
+<div class="titlehead">
+ <h1>Upload</h1>
+</div>
+<div class="picbg">
+ <img src="images/uplbg.png">
+</div>
+</section></section>
+
+<section id=c2><section class="Sec_Pat">
+<div class="titlehead">
+ <h1>Doctors</h1>
+</div>
+<div class="picbg">
+ <img src="images/docbg.png">
+</div>
+</section>
+</section>
+
+<div class="container">
+
+<!-- RECORDS KA PART -->
+        <section id="a1">
+          <div id = "hprofile" class="panel panel-default">
+              <div class="panel-heading"><br><br>
+                  <h2 class="text-center" style="margin-bottom: -15px; font-size: 30px;">Personal Information</h2>
+              </div>
+              <div class="panel-body">
+                  <div class="row">
+                      <div class="col-sm-offset-1 col-sm-10">
+                          <table class="table">
+                              <tr>
+                                  <th>Name</th>
+                                  <td id="pname"></td>
+                              </tr>
+                              <br>
+                              <tr>
+                                  <th>Age</th>
+                                  <td id="p_age"></td>
+                              </tr>
+                              <br>
+                              <tr>
+                                  <th>Account Address</th>
+                                  <td id="p_address"></td>
+                              </tr><br>
+                          </table><br>
+<hr>
+<!-- BUTTON CODE STARTS HERE -->
+<div class="panel-heading"><br><br>
+    <h2 class="text-center" style="margin-bottom: -15px; font-size: 30px;">Medical Records</h2><br><br>
+</div>
+                          <div class="recordsstorage">
+                            <div id="container" ></div>
+
+
+                          </div>
+
+<!-- BUTTON CODE ENDS HERE -->
+
+                      </div>
+                  </div>
+
+              </div><br><br><br><br><br>
+          </div>
+        </section>
+<!-- UPLOAD KA CODE -->
+        <section id="b1">
+          <div id = "hmd" class="panel panel-default">
+              <div  class="panel-heading">
+                  <h3 class="text-center" style="font-size: 30px;">Upload Medical Record</h3><br><br>
+              </div>
+              <label class="col-lg-2 control-label" style="font-size:20px;">File Upload:   </label><br>
+              <input id="file" type="file">
+              <button id="button" class="button" style="margin-left: 580px;">Upload</button>
+              <br>
+          </div><br><br><br><br><br><br><br><br><br>
+
+        </section>
+<!-- DOCTORS KA CODE -->
+        <section id="c1">
+          <form class="form-horizontal" >
+              <div class="form-group">
+                  <label for="permitDoctorList" class="control-label col-sm-2" style="font-size: 30px;"><br><strong>Grant Access to a Doctor:</strong></label><br><br>
+                  <div class="col-sm-8">
+                      <select class="form-control" id="permitDoctorList" style="padding: 3px">
+                          <option selected disabled>-- Please Select --</option>
+                      </select>
+                  </div>
+              </div><br>
+          </form>
+          <div class="text-center">
+              <button id = "giveAccess" class="button">Confirm</button>
+          </div>
+
+<br><br>
+  <div id = "hdoc" class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="text-center" style="font-size: 30px;">Current Access Holders</h3><br>
+      </div>
+      <div class="panel-body">
+          <div class="row">
+              <div class="alert alert-danger col-sm-8 col-sm-offset-2">
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-offset-1 col-sm-10">
+                  <table id="accessDoc" class="table table-hover">
+                      <tr>
+                          <th>Doctor</th>
+                          <th class="publicKeyDoctor">Account Address</th>
+                          <th>Revoke access</th>
+                      </tr>
+                  </table>
+
+              </div>
+
+          </div>
+
+      </div>
+  </div>
+  </section>
+</div>
+
+
+<br><br><br><br>
+<hr>
+  </body>
+
+</html>
